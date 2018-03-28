@@ -4,12 +4,128 @@ const expect = require('expect');
 
 const utils = require('./utils');
 
+
+// ---------------------------- describe() --------------------------------
+/**
+ * describe();
+ * 
+ * We can use this test module without importing a module.
+ * 
+ * Then, test all mocha codes including "mjackson expect" at once.
+ * It generates the detail information.
+ * 
+ */
+
+// 'Utils': the name of the test which contains the test items.
+//     It can be named but by convention, 
+//     it should be a test file name like 'utils.js' 
+// Also, describe is able to group the tests as writing a describe()
+//     inside of describe()
+ describe('Utils', () => {
+
+    describe('add', () => {
+
+        it('should add two numbers', () => {
+
+            let res = utils.add(33,11);
+        
+            if (res !== 44) {
+        
+                throw new Error(`${res} is not correct.`);
+        
+            }
+        
+        });
+
+    });
+    
+    it ('should multiply x two times', () => {
+    
+        let res = utils.square(5);
+    
+        if (res !== 25) {
+    
+            throw new Error(`${res} is not 25.`)
+        }
+    });
+
+    
+    it('should add two numbers here', () => {
+
+        let res = utils.add(33,11);
+
+        // by using expect.toBe
+        expect(res).toBe(44);
+
+    });
+
+    it('should add two numbers here', () => {
+
+        let res = utils.add(33,11);
+    
+        // by using expect.toBe
+        // expect(res).toBe(44).toBeA('string'); // => error
+        expect(res).toBe(44).toBeA('number');
+        // console.log(expect(res).toBe(44).toBeA('string')) => error 
+    });
+    
+    
+    it ('should multiply x two times', () => {
+    
+        let res = utils.square(5);
+    
+        expect(res).toBe(25).toBeA('number');
+    
+    });
+    
+    // notToBe
+    it ('should not be same numbers', () => {
+    
+        // if it is not equal, it passes
+        expect(5).toNotBe(25);
+    
+    });
+
+    it('should add two numbers here', () => {
+
+        let res = utils.add(33,11);
+    
+        // by using expect.toBe
+        // expect(res).toBe(44).toBeA('string'); // => error
+        expect(res).toBe(44).toBeA('number');
+        // console.log(expect(res).toBe(44).toBeA('string')) => error 
+    });
+    
+    
+    it ('should multiply x two times', () => {
+    
+        let res = utils.square(5);
+    
+        expect(res).toBe(25).toBeA('number');
+    
+    });
+    
+    // notToBe
+    it ('should not be same numbers', () => {
+    
+        // if it is not equal, it passes
+        expect(5).toNotBe(25);
+    
+    });
+
+
+ });
+
+// ----------------- Mocha --------------------------
+
 /**
  * [Mocha]
  *  npm i mocha --save-dev
     (=> we would find "devDependancies" attribute
     in "package.json" file. )
  */
+
+/*
 
 // "test.js" must be defined in the file name.
 // It is a file for the test cases 
@@ -42,6 +158,7 @@ it ('should multiply x two times', () => {
     }
 });
 
+*/
 // --------------------------------------------------------------
 
 /**
@@ -57,6 +174,8 @@ it ('should multiply x two times', () => {
 
 // "tobe" in assertion
 
+/*
+
 it('should add two numbers here', () => {
 
     let res = utils.add(33,11);
@@ -65,6 +184,8 @@ it('should add two numbers here', () => {
     expect(res).toBe(44);
 
 });
+
+*/
 
 // toBeA(string) : to find the value type
 
@@ -75,7 +196,7 @@ it('should add two numbers here', () => {
  * 
  */
 
-
+/*
 it('should add two numbers here', () => {
 
     let res = utils.add(33,11);
@@ -102,6 +223,8 @@ it ('should not be same numbers', () => {
     expect(5).toNotBe(25);
 
 });
+
+*/
 
 it ('should not be same numbers', () => {
 

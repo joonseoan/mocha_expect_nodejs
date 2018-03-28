@@ -11,6 +11,62 @@ const expect = require('expect');
 //      Therefore require('./server').app is required.
 let app = require('./server').app;
 
+
+//---------------------- describe()---------------------------------------
+/**
+ * 
+ * describe() can be used for the "express" test, too.
+ * 
+ */
+
+ describe('Server', () => {
+
+    describe('Root', () => {
+
+        it('It should retrun Express', (done) => {
+
+            request(app)
+                .get('/')
+                .expect((res) => {
+
+                    expect(res.body).toInclude({
+
+                        error : 'Page not found'
+
+                    });
+
+                })
+                .expect(404)
+                .end(done);
+        });
+    });
+
+    describe('Root/about_myself', () => {
+
+        it('It should be challenging assignment', (done) => {
+
+            request(app)
+                .get('/about_myself')
+                .expect(200)
+                .expect((res) => {
+
+                    expect(res.body).toInclude({
+
+                        name : 'Andrew',
+                        age: 25
+
+                    });
+                })
+                .end(done);
+
+        });
+
+    });
+
+ });
+
+
+
 /**
  * app.get('/', (req, res) => {
 
